@@ -10,4 +10,4 @@ yarn-error.log*
 
 .vscode/*
 
-secret.ts
+src/secret.ts
