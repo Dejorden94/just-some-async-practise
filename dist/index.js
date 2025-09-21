@@ -1,5 +1,4 @@
 "use strict";
-const dataElement = document.getElementById("--weather-data");
 async function bookData() {
     const bookDataUrl = `https://openlibrary.org/search.json?q=the+lord+of+the+rings`;
     console.log(`The book url: ${bookDataUrl}`);
@@ -23,7 +22,9 @@ const bookList = document.getElementById("--book-list");
 bookData().then((data) => {
     if (data) {
         data.docs.forEach((doc) => {
-            console.log(doc.title);
+            const listItem = document.createElement("li");
+            listItem.textContent = doc.title;
+            bookList?.appendChild(listItem);
         });
     }
 }).catch((error) => {
