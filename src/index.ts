@@ -1,6 +1,5 @@
-interface DocData {
-    title: string;
-}
+import {creatListItem} from "./utils/create-list-util";
+import {DocData} from "./types/docs-type";
 
 async function bookData() {
     const bookDataUrl = `https://openlibrary.org/search.json?q=the+lord+of+the+rings`;
@@ -28,9 +27,7 @@ const bookList = document.getElementById("--book-list");
 bookData().then((data) => {
     if (data) {
         data.docs.forEach((doc:DocData) => {
-            const listItem = document.createElement("li");
-            listItem.textContent = doc.title;
-            bookList?.appendChild(listItem);
+            creatListItem(doc, bookList);
         })
     }
 }).catch((error) => {
