@@ -19,9 +19,13 @@ async function bookData() {
         console.log(`We found the following error: ${error}`);
     }
 }
+const bookList = document.getElementById("--book-list");
 bookData().then((data) => {
-    console.log(data);
-    if (dataElement) {
-        dataElement.innerText = JSON.stringify(data, null, 2);
+    if (data) {
+        data.docs.forEach((doc) => {
+            console.log(doc.title);
+        });
     }
+}).catch((error) => {
+    console.log(`Something went wrong ${error}`);
 });

@@ -1,3 +1,7 @@
+interface DocData {
+    title: string;
+}
+
 const dataElement = document.getElementById("--weather-data");
 
 async function bookData() {
@@ -21,9 +25,14 @@ async function bookData() {
     }
 }
 
+const bookList = document.getElementById("--book-list");
+
 bookData().then((data) => {
-    console.log(data);
-    if (dataElement) {
-        dataElement.innerText = JSON.stringify(data, null, 2);
+    if (data) {
+        data.docs.forEach((doc:DocData) => {
+            console.log(doc.title)
+        })
     }
-});
+}).catch((error) => {
+    console.log(`Something went wrong ${error}`)
+})
